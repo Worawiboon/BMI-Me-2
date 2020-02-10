@@ -1,7 +1,10 @@
 package th.ac.su.bmime2
 
+import android.app.Activity
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Button
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -18,6 +21,7 @@ class DetailActivity : AppCompatActivity() {
 
         var w = weight
         var h = height
+
         h = h/100
 
         var bmi:Double = w/(h*h)
@@ -25,29 +29,55 @@ class DetailActivity : AppCompatActivity() {
         var result = "fat"
 
         if(bmi>30) {
-            tvDetail.setText(bmi.toString())
-            tvDetail.setText("Obese")
+            result = ("Obese")
         }
         else if (bmi> 25) {
-            tvDetail.setText(bmi.toString())
-            tvDetail.setText("Overweight")
+            result = ("Overweight")
         }
         else if (bmi> 18) {
-            tvDetail.setText(bmi.toString())
-            tvDetail.setText("Healthy")
+            result = ("Healthy")
         }
         else {
-            tvDetail.setText(bmi.toString())
-            tvDetail.setText("Underweight")
+            result = ("Underweight")
         }
 
-        tvBmi.setText(bmi.toString())
-
-        tvHw.setText("height: "+height.toString()+"weight: "+weight.toString())
 
 
+        tvBmi.setText(bmi.round(2).toString())
 
+        tvDetail.setText(result.toString())
 
+        tvHw.setText("height: "+height.toString()+" weight: "+weight.toString()+")")
+
+        var btnShare = findViewById<Button>(R.id.btnShare)
+        btnShare.setOnClickListener{
+
+            val value = "My BMI is "+bmi.round(2)+"("+result+")"
+
+                var intent = Intent();
+                intent.action = Intent.ACTION_SEND
+                intent.putExtra(Intent.EXTRA_TEXT,value)
+                intent.type = "text/plan"
+
+                startActivity(Intent.createChooser(intent,"share info"))
+
+        }
+
+        var btnBack = findViewById<Button>(R.id.btnBack)
+        btnBack.setOnClickListener{
+
+            var intent = Intent()
+            setResult(Activity.RESULT_OK,intent)
+            finish()
+        }
 
     }
+}
+    fun Double.round(decimals: Int): Double {
+    var multiplier = 1.0
+    repeat(decimals) { multiplier *= 10 }
+    return kotlin.math.round(this * multiplier) / multiplier
+
+
+
 }

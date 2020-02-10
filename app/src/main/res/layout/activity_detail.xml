@@ -5,6 +5,7 @@
     >
 
     <Button
+        android:id="@+id/btnBack"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="X"
@@ -40,7 +41,7 @@
         android:text="(height 1.8 weight:80.0"
         android:gravity="center"/>
 
-    <Button
+        <Button
         android:id="@+id/btnShare"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

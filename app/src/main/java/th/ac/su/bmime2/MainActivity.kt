@@ -26,15 +26,6 @@ class MainActivity : AppCompatActivity() {
             var weight = edtWeight.text.toString().toInt()
 
 
-
-            fun Double.round(decimals: Int): Double {
-                var multiplier = 1.0
-                repeat(decimals) { multiplier *= 10 }
-                return kotlin.math.round(this * multiplier) / multiplier
-            }
-
-
-
             startActivity(intent)
         }
 

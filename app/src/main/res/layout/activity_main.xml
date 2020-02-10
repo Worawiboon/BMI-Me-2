@@ -26,6 +26,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:hint="your height (cm)"
+        android:inputType="number"
         android:gravity="center"/>
 
     <EditText
@@ -37,6 +38,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginRight="24dp"
         android:hint="your weight (kg)"
+        android:inputType="number"
         android:gravity="center"/>
 
     <Button
@@ -53,8 +55,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
